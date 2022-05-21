@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "..";
 
-import { ProductHeader } from "./components";
+import { AddProductHeader } from "./components";
 
 export function AddProductPage() {
 	const navigate = useNavigate();
@@ -14,7 +14,7 @@ export function AddProductPage() {
 
 	return (
 		<form onSubmit={handleNewProductSubmit}>
-			<ProductHeader />
+			<AddProductHeader />
 			{
 				// <Form />
 				<Footer />

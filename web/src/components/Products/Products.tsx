@@ -3,27 +3,34 @@ import { Product } from "..";
 
 export function Products() {
 	return (
-		<div className="row gap-3 p-3">
+		<div className="d-flex row align-items-center justify-content-center items gap-5 p-3">
 			<Product
-				SKU="SKU"
+				SKU="1"
 				name="Name"
 				price="Price"
-				attribute="Attribute"
-				image="../../../public/assets/defaultImages/furniture.jpg"
+				attribute={{ type: "Attribute", value: "Text" }}
+				image="/assets/defaultImages/furniture.jpg"
 			/>
 			<Product
-				SKU="SKU"
+				SKU="2"
 				name="Name"
 				price="Price"
-				attribute="Attribute"
-				image="../../../public/assets/defaultImages/furniture.jpg"
+				attribute={{ type: "Attribute", value: "Text" }}
+				image="/assets/defaultImages/furniture.jpg"
 			/>
 			<Product
-				SKU="SKU"
+				SKU="3"
 				name="Name"
 				price="Price"
-				attribute="Attribute"
-				image="../../../public/assets/defaultImages/furniture.jpg"
+				attribute={{ type: "Attribute", value: "Text" }}
+				image="/assets/defaultImages/furniture.jpg"
+			/>
+			<Product
+				SKU="4"
+				name="Name"
+				price="Price"
+				attribute={{ type: "Attribute", value: "Text" }}
+				image="/assets/defaultImages/furniture.jpg"
 			/>
 		</div>
 	);
