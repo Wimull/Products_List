@@ -1,0 +1,13 @@
+.form_label {
+	font-size: 1.25em;
+	font-weight: bold;
+	min-width: 160px;
+}
+input,
+select {
+	min-width: 160px;
+}
+.error_message {
+	color: #d2202f;
+	font-style: italic;
+}

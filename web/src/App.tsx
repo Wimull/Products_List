@@ -1,7 +1,17 @@
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import { Header, HomePage, AddProductPage } from "./components";
 
-export type ProductsTypes = "furniture" | "";
+export const productsProperties = {
+	Book: [{ property: "Weight", measurement: "KG" }],
+	Dvd: [{ property: "Length", measurement: "MB" }],
+	Furniture: [
+		{ property: "Height", measurement: "CM" },
+		{ property: "Width", measurement: "CM" },
+		{ property: "Length", measurement: "CM" },
+	],
+};
+
+export type ProductTypes = keyof typeof productsProperties;
 
 function App() {
 	return (

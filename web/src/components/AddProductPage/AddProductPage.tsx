@@ -1,24 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "..";
+import { useForm } from "react-hook-form";
 
-import { AddProductHeader } from "./components";
+import { AddProductForm, AddProductHeader } from "./components";
 
 export function AddProductPage() {
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm();
+
 	const navigate = useNavigate();
 	function handleNewProductSubmit(e: any) {
-		e.preventDefault();
-		console.log("Hello World");
-		navigate("/");
+		console.log(e);
 	}
 
 	return (
-		<form onSubmit={handleNewProductSubmit}>
+		<form id="product_form" onSubmit={handleSubmit(handleNewProductSubmit)}>
 			<AddProductHeader />
-			{
-				// <Form />
-				<Footer />
-			}
+
+			<AddProductForm
+				formProps={{ register: register, errors: errors }}
+			/>
+			<Footer />
 		</form>
 	);
 }
