@@ -3,8 +3,8 @@
 	font-weight: bold;
 	min-width: 160px;
 }
-input,
-select {
+.form-select,
+.form-control {
 	min-width: 160px;
 }
 .error_message {
