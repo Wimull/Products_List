@@ -39,6 +39,7 @@ export function Product({ SKU, name, price, attribute, image }: ProductProps) {
 					backgroundImage: `url(${image})`,
 					//maxWidth: "350px",
 					height: "300px",
+					width: "300px",
 					backgroundSize: "350px",
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "top",
