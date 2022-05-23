@@ -1,5 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import { Header, Footer, Products } from "..";
+import axios from "axios";
+import { api } from "../../libs/Api";
 
 type MassDeletionTypes = {
 	itemsSelectedForDeletion: string[];
@@ -17,6 +19,21 @@ export function HomePage() {
 	const [itemsSelectedForDeletion, setItemsSelectedForDeletion] = useState<
 		string[]
 	>([]);
+	const [products, setProducts] = useState([{}]);
+
+	const handleFetchProducts = useCallback(async () => {
+		const res = await api.get("/products");
+		if (res.status == 200) {
+			setProducts(res.data);
+			console.log(res.data);
+			return;
+		} else return;
+	}, [products]);
+
+	useEffect(() => {
+		handleFetchProducts();
+	}, []);
+
 	function handleItemSelectedChange(item: string) {
 		if (
 			itemsSelectedForDeletion.length > 0 &&
@@ -30,9 +47,12 @@ export function HomePage() {
 		}
 		console.log(itemsSelectedForDeletion);
 	}
+
 	function handleMassDeletion(array: string[]) {
 		setItemsSelectedForDeletion([]);
+		handleFetchProducts();
 	}
+
 	return (
 		<>
 			<MassDeletionContext.Provider
