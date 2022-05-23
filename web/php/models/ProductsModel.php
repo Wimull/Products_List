@@ -18,11 +18,11 @@ require_once( __DIR__ . "\../models/ApiModel.php");
             $result = $pdo->fetchAll(\PDO::FETCH_CLASS, "ProductsModel");
 
             $products = array();
-            if(count($products)) {
+            if(count($result)) {
                 foreach ($result as $row) array_push($products, $row);
                 return $products;
             }
-            throw new \Exception("No Product Found", 204);
+            throw new \Exception("No Product Found", 404);
         }
         public function createProducts(){
             $pdo = DB::get()->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (:sku, :name, :price, :type, :properties)");

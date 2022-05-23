@@ -1,5 +1,5 @@
 <?php  
-    $debug = 1;
+    $debug = 0;
 require("./autoload.php");
 
 

@@ -1,2 +1,3 @@
 .vscode/launch.json
-web/php/log.txt
+web/php/*.txt
+.vscode
