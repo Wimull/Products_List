@@ -1,5 +1,7 @@
 <?php 
-require( __DIR__ . "\..\autoload.php");
+require_once( __DIR__ . "\../models/ProductsModel.php");
+//require( __DIR__ . "\../libs/Helper.php");
+require( __DIR__ . "\../controllers/ApiController.php");
     /**
     @desc   Products controller 
      */class ProductsController extends ApiController {
@@ -9,13 +11,12 @@ require( __DIR__ . "\..\autoload.php");
 
         public function __construct()
         {
-            preg_match("/(.+)/Controllers$", get_class($this), $match);
-            printf("hi");
-            $this->model_name = $match[1] . "Model";
+            preg_match("#(.+)/controllers$#", get_class($this), $match);
+            $this->model_name = $match[0] . "Model";
             if (class_exists($this->model_name)) {
                 $this->model = new $this->model_name();
             } else {
-                throw new \Error("Model does not exist.", 500);
+                throw new \Exception($this->model, 500);
             }
         }
 

@@ -5,19 +5,20 @@ require("./autoload.php");
 
 try{
 
-    spl_autoload_register(function ($classname)
-    {
-        if(preg_match("/[a-zA-Z]+Controller$/", $classname)) {
-            require __DIR__ . '/controllers/' . $classname . '.php';
-        } elseif(preg_match("/[a-zA-Z]+Models$/", $classname)) {
-            require __DIR__ . '/models/' . $classname . '.php';
-        } elseif(preg_match("/[a-zA-Z]+Views$/", $classname)) {
-            require __DIR__ . '/views/' . $classname . '.php';
-        }
-        else {
-            require __DIR__ . '/libs/' . str_replace('_', DIRECTORY_SEPARATOR, $classname) . '.php';
-        }
-    });
+    // spl_autoload_register(function ($classname)
+    // {
+    //     if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
+    //         require __DIR__ . '/controllers/' . $classname . '.php';
+    //     } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
+    //         require __DIR__ . '/models/' . $classname . '.php';
+    //     } elseif(preg_match("/[a-zA-Z]*Views$/", $classname)) {
+    //         require __DIR__ . '/views/' . $classname . '.php';
+    //     }
+    //     else {
+
+    //         require __DIR__ . '/lib/' . str_replace('_', DIRECTORY_SEPARATOR, $classname) . '.php';
+    //     }
+    // });
 
     $request = new Request();
 

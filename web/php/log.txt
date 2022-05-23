@@ -1,0 +1,92 @@
+2022-05-23 01:05:49 am - 500 - Model does not exist.
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:07:22 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:07:56 am - 500 - Model does not exist.
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:08:16 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:10:06 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:10:17 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:10:28 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:10:59 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:11:14 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:11:26 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:11:46 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:12:01 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:12:11 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:12:26 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:12:59 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:13:17 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:14:07 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:14:15 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:14:33 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:14:46 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:15:13 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:15:24 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+
+2022-05-23 01:15:32 am - 500 - 
+Stack Trace: #0 C:\Users\Usuario\Documents\Projetos\Shop_List\web\php\index.php(29): ProductsController->__construct()
+#1 {main}
+

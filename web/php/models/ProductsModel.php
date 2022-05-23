@@ -1,5 +1,8 @@
 <?php  
-require( __DIR__ . "\..\autoload.php");
+
+//require( __DIR__ . "\../libs/Helper.php");
+require_once( __DIR__ . "\../models/ApiModel.php");
+
     class ProductsModel extends ApiModel {
 
         public $sku;
@@ -9,6 +12,7 @@ require( __DIR__ . "\..\autoload.php");
         public $properties;
 
         public function getProducts(){
+            echo("Hello");
             $pdo = DB::get()->prepare("SELECT * FROM products");
             $pdo->execute();
             $result = $pdo->fetchAll(\PDO::FETCH_CLASS, "ProductsModel");

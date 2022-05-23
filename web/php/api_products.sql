@@ -2,9 +2,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
---
---Create Database "api_products"
---
 CREATE DATABASE IF NOT EXISTS `api_products` DEFAULT CHARACTER SET latin1;
 USE `api_products`;
 

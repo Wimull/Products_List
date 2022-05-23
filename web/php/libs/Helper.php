@@ -1,6 +1,6 @@
 <?php 
 
-require( __DIR__ . "\..\autoload.php");
+
     class Helper{
         static function cast($instance, $className){
             return unserialize(
