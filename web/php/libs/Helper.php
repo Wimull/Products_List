@@ -27,17 +27,19 @@
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Access-Control-Allow-Origin: *'));
+
 
             $result = curl_exec($curl);
             $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            echo curl_getinfo($curl);
             curl_close($curl);
             if ($http_status == 200){ 
                 $result = json_decode($result, true);
-                return $result;
+                return curl_getinfo($curl);
             }
 
-            return $result;
+            return curl_getinfo($curl);
         }
         static function isJson($string){
             json_decode($string);
