@@ -12,7 +12,7 @@ require_once( __DIR__ . "\../models/ApiModel.php");
         public $properties;
 
         public function getProducts(){
-            echo("Hello");
+
             $pdo = DB::get()->prepare("SELECT * FROM products");
             $pdo->execute();
             $result = $pdo->fetchAll(\PDO::FETCH_CLASS, "ProductsModel");

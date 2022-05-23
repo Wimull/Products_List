@@ -11,12 +11,12 @@ require( __DIR__ . "\../controllers/ApiController.php");
 
         public function __construct()
         {
-            preg_match("#(.+)/controllers$#", get_class($this), $match);
-            $this->model_name = $match[0] . "Model";
+            preg_match("#(.+)Controller$#", get_class($this), $match);
+            $this->model_name = $match[1] . "Model";
             if (class_exists($this->model_name)) {
                 $this->model = new $this->model_name();
             } else {
-                throw new \Exception($this->model, 500);
+                throw new \Exception("Model was not created.", 500);
             }
         }
 

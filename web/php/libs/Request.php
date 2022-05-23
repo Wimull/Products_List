@@ -11,7 +11,7 @@ class Request{
 
 
     public function __construct() {
-        echo "hi";
+
         $this->verb = $_SERVER['REQUEST_METHOD'];
         $this->url_elements = explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]);
 		$this->output_format = 'json';

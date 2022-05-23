@@ -1,5 +1,5 @@
 <?php  
-    $debug = 0;
+    $debug = 1;
 require("./autoload.php");
 
 
@@ -28,7 +28,7 @@ try{
         if(class_exists($controller_name)){
             $controller = new $controller_name();
             $action_name = strtolower($request->verb) . "Action";
-            $result = $controller->action_name($request);
+            $result = $controller->$action_name($request);
 
             if (!$debug) {
                 $view_name = ucfirst($request->output_format) . 'View';
