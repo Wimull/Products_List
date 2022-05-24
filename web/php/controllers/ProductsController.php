@@ -58,13 +58,16 @@ require( __DIR__ . "\../controllers/ApiController.php");
         @desc   Delete one or multiple products
          */public function deleteAction($request){
 
-            $this->model = Helper::cast($request->body->ids, $this->model_name);
+            $ids = $request->body->ids;
 
-            if ($this->model->ids){
-                return $this->model->deleteProducts($this->model->ids);
+            if (count($ids)){
+                return $this->model->deleteProducts($ids);
                 }
 
             throw new \Exception("Missing product SKUs.", 400);
+        }
+        public function optionsAction($request){
+            return $this->model->optionsProducts($request);
         }
         
     }

@@ -27,7 +27,6 @@ export function Product({
 	image,
 	type,
 }: ProductProps) {
-	console.log(attribute);
 	let propertyText = "";
 	switch (type.toLocaleLowerCase()) {
 		case "book":
@@ -47,13 +46,11 @@ export function Product({
 				"Error: propertyText for this type not yet implemented/missing.";
 	}
 
-	//const [selectedForDeletion, setSelectedForDeletion] = useState(false);
 	const { handleItemSelectedChange, itemsSelectedForDeletion } =
 		useContext(MassDeletionContext);
 
 	function handleCheckbox() {
 		handleItemSelectedChange(SKU);
-		//setSelectedForDeletion(!selectedForDeletion);
 	}
 
 	const selectedForDeletion: boolean = useMemo(() => {

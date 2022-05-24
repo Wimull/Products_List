@@ -27,12 +27,11 @@ export function HomePage() {
 		if (res.status == 200) {
 			let data = res.data;
 			data.forEach((product: ProductType | any) => {
-				//console.log(product.properties);
 				product.properties = JSON.parse(
 					'{ "type":"Size", "props":[{"Size":20}] }'
 				);
 			});
-			//console.log(data);
+
 			setProducts(data);
 			return;
 		} else return;
@@ -56,7 +55,21 @@ export function HomePage() {
 		console.log(itemsSelectedForDeletion);
 	}
 
-	function handleMassDeletion() {
+	async function handleMassDeletion() {
+		try {
+			await api.delete("/products", {
+				method: "delete",
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+					"X-Requested-With": "XMLHttpRequest",
+				},
+				data: {
+					ids: itemsSelectedForDeletion,
+				},
+			});
+		} catch (e) {
+			console.log(e);
+		}
 		setItemsSelectedForDeletion([]);
 		handleFetchProducts();
 	}
