@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
-import { Header, HomePage, AddProductPage } from "./components";
+import { Route, Routes } from "react-router-dom";
+import { HomePage, AddProductPage } from "./components";
 
 export const productsProperties = {
 	Book: {
@@ -7,6 +7,7 @@ export const productsProperties = {
 		props: [{ property: "Weight", measurement: "KG" }],
 	},
 	Dvd: { type: "Size", props: [{ property: "Size", measurement: "MB" }] },
+
 	Furniture: {
 		type: "Dimensions",
 		props: [
@@ -15,10 +16,23 @@ export const productsProperties = {
 			{ property: "Length", measurement: "CM" },
 		],
 	},
-};
+} as const;
+
+export type ProductsPropertiesType =
+	typeof productsProperties[ProductTypes]["type"];
 
 export type ProductTypes = keyof typeof productsProperties;
 
+export type ProductType = {
+	sku: string;
+	name: string;
+	price: string;
+	type: ProductTypes;
+	properties: {
+		type: ProductsPropertiesType;
+		props: { [name: string]: string }[];
+	};
+};
 function App() {
 	return (
 		<div className="App mx-5 my-2" style={{}}>

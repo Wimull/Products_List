@@ -1,4 +1,9 @@
-import React, { ReactPropTypes, useContext, useMemo, useState } from "react";
+import React, { useContext, useMemo } from "react";
+import {
+	productsProperties,
+	ProductsPropertiesType,
+	ProductTypes,
+} from "../../App";
 import { MassDeletionContext } from "../HomePage";
 import "./styles.css";
 
@@ -6,11 +11,42 @@ interface ProductProps {
 	SKU: string;
 	name: string;
 	price: string;
-	attribute: { type: string; value: string | number };
+	type: ProductTypes;
+	attribute: {
+		type: ProductsPropertiesType;
+		value: { [name: string]: string }[];
+	};
 	image: string;
 }
 
-export function Product({ SKU, name, price, attribute, image }: ProductProps) {
+export function Product({
+	SKU,
+	name,
+	price,
+	attribute,
+	image,
+	type,
+}: ProductProps) {
+	console.log(attribute);
+	let propertyText = "";
+	switch (type.toLocaleLowerCase()) {
+		case "book":
+			propertyText = `${attribute.value[0][attribute.type]} ${
+				productsProperties["Book"].props[0].measurement
+			}`;
+		case "dvd":
+			propertyText = `${attribute.value[0][attribute.type]} ${
+				productsProperties["Dvd"].props[0].measurement
+			}`;
+			break;
+		case "furniture":
+			propertyText = `${attribute.value[0]["Length"]}x${attribute.value[0]["Width"]}x${attribute.value[0]["Height"]}`;
+			break;
+		default:
+			propertyText =
+				"Error: propertyText for this type not yet implemented/missing.";
+	}
+
 	//const [selectedForDeletion, setSelectedForDeletion] = useState(false);
 	const { handleItemSelectedChange, itemsSelectedForDeletion } =
 		useContext(MassDeletionContext);
@@ -57,18 +93,18 @@ export function Product({ SKU, name, price, attribute, image }: ProductProps) {
 					<span className="text col-12 text-center">
 						<span style={{ fontWeight: "bold" }}>SKU:</span> {SKU}
 					</span>
-					<span className="text col-md-6 col-sm-12 text-sm-center">
+					<span className="text col-md-6 col-sm-12 text-sm">
 						<span style={{ fontWeight: "bold" }}>Name:</span> {name}
 					</span>
-					<span className="text col-md-6 col-sm-12 text-sm-center">
-						<span style={{ fontWeight: "bold" }}>Price:</span> $
-						{price}
+					<span className="text col-md-12 col-sm-12 text-sm">
+						<span style={{ fontWeight: "bold" }}>Price:</span>{" "}
+						{price}.00 $
 					</span>
 					<span className="text col-12">
 						<span style={{ fontWeight: "bold" }}>
 							{attribute.type}:{" "}
 						</span>
-						{attribute.value}
+						{propertyText}
 					</span>
 				</div>
 			</div>

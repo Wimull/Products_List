@@ -11,7 +11,7 @@ export interface ProductDataTypes {
 	name: string;
 	price: string;
 	type: string;
-	property: { type: string; props: object };
+	property: { type: string; props: object[] };
 }
 
 export function AddProductPage() {

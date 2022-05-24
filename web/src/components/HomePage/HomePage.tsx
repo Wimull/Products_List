@@ -1,7 +1,8 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import { Header, Footer, Products } from "..";
 import axios from "axios";
-import { api } from "../../libs/Api";
+import { api } from "../../libs/api";
+import { ProductType } from "../../App";
 
 type MassDeletionTypes = {
 	itemsSelectedForDeletion: string[];
@@ -19,13 +20,20 @@ export function HomePage() {
 	const [itemsSelectedForDeletion, setItemsSelectedForDeletion] = useState<
 		string[]
 	>([]);
-	const [products, setProducts] = useState([{}]);
+	const [products, setProducts] = useState<ProductType[] | null>();
 
 	const handleFetchProducts = useCallback(async () => {
 		const res = await api.get("/products");
 		if (res.status == 200) {
-			setProducts(res.data);
-			console.log(res.data);
+			let data = res.data;
+			data.forEach((product: ProductType | any) => {
+				//console.log(product.properties);
+				product.properties = JSON.parse(
+					'{ "type":"Size", "props":[{"Size":20}] }'
+				);
+			});
+			//console.log(data);
+			setProducts(data);
 			return;
 		} else return;
 	}, [products]);
@@ -48,7 +56,7 @@ export function HomePage() {
 		console.log(itemsSelectedForDeletion);
 	}
 
-	function handleMassDeletion(array: string[]) {
+	function handleMassDeletion() {
 		setItemsSelectedForDeletion([]);
 		handleFetchProducts();
 	}
@@ -63,8 +71,7 @@ export function HomePage() {
 				}}
 			>
 				<Header />
-
-				<Products />
+				{products && <Products products={products} />}
 			</MassDeletionContext.Provider>
 			<Footer />
 		</>
