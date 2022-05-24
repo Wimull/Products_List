@@ -30,7 +30,7 @@ export type ProductType = {
 	type: ProductTypes;
 	properties: {
 		type: ProductsPropertiesType;
-		props: { [name: string]: string }[];
+		props: { [name: string]: string };
 	};
 };
 function App() {

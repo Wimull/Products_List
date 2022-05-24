@@ -41,10 +41,14 @@ require( __DIR__ . "\../controllers/ApiController.php");
         @uri    /products
         @verb   POST
         @desc   Create one new product
-         */public function putAction($request) {
+         */public function postAction($request) {
 
-            $this->model = Helper::cast($request->body->product, $this->model_name);
-
+            $this->model->sku = $request->body->sku;
+            $this->model->name = $request->body->name;
+            $this->model->price = $request->body->price;
+            $this->model->type = $request->body->type;
+            $this->model->properties = $request->body->properties;
+            
             if ($this->model->sku && $this->model->name && $this->model->price && $this->model->type && $this->model->properties){
                 return $this->model->createProducts();
             }

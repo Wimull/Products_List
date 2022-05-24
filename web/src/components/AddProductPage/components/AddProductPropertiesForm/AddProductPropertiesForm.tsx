@@ -2,7 +2,7 @@ import React from "react";
 import { productsProperties, ProductTypes } from "../../../../App";
 import { RegisterOptions, FieldErrors } from "react-hook-form";
 import "./styles.css";
-import { ProductDataParams, ProductDataTypes } from "../..";
+import { ProductActionKind, ProductActionType, ProductStateTypes } from "../..";
 
 interface AddProductPropertiesFormProps {
 	productType: ProductTypes | null;
@@ -11,11 +11,8 @@ interface AddProductPropertiesFormProps {
 		errors: FieldErrors;
 	};
 	formData: {
-		productData: ProductDataTypes;
-		dispatchProductData: (value: {
-			type: ProductDataParams;
-			payload: any;
-		}) => void;
+		productData: ProductStateTypes;
+		dispatchProductData: (value: ProductActionType) => void;
 	};
 }
 
@@ -49,14 +46,13 @@ export function AddProductPropertiesForm({
 								required: true,
 								onChange: (e) =>
 									dispatchProductData({
-										type: "Property",
-										payload: {
+										type: ProductActionKind.PROPERTIES,
+										payload: JSON.stringify({
 											type: product.type,
 											props: {
-												...productData.property.props,
 												[property]: e.target.value,
 											},
-										},
+										}),
 									}),
 							})}
 						/>

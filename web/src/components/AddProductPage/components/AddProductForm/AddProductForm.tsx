@@ -3,7 +3,7 @@ import { RegisterOptions, FieldErrors } from "react-hook-form";
 import "./styles.css";
 import { productsProperties, ProductTypes } from "../../../../App";
 import { AddProductPropertiesForm } from "../AddProductPropertiesForm";
-import { ProductDataParams, ProductDataTypes } from "../..";
+import { ProductActionKind, ProductActionType, ProductStateTypes } from "../..";
 
 interface AddProductFormProps {
 	formProps: {
@@ -11,11 +11,8 @@ interface AddProductFormProps {
 		errors: FieldErrors;
 	};
 	formData: {
-		productData: ProductDataTypes;
-		dispatchProductData: (value: {
-			type: ProductDataParams;
-			payload: any;
-		}) => void;
+		productData: ProductStateTypes;
+		dispatchProductData: (value: ProductActionType) => void;
 	};
 }
 
@@ -27,12 +24,12 @@ export function AddProductForm({
 
 	useEffect(() => {
 		dispatchProductData({
-			type: "SKU",
+			type: ProductActionKind.SKU,
 			payload: `${productData.type
-				?.slice(0, 3)
+				?.slice(0, 4)
 				.toLocaleUpperCase()}${productData.price
 				?.replace("$", "")
-				.slice(-3)}${productData.name
+				.slice(0, 3)}${productData.name
 				?.slice(0, 4)
 				.toLocaleUpperCase()}`,
 		});
@@ -55,7 +52,7 @@ export function AddProductForm({
 						value: productData.sku,
 						onChange: (e) =>
 							dispatchProductData({
-								type: "SKU",
+								type: ProductActionKind.SKU,
 								payload: e.target.event,
 							}),
 					})}
@@ -73,7 +70,7 @@ export function AddProductForm({
 						required: true,
 						onChange: (e) =>
 							dispatchProductData({
-								type: "Name",
+								type: ProductActionKind.NAME,
 								payload: e.target.value,
 							}),
 						value: productData.name,
@@ -101,7 +98,7 @@ export function AddProductForm({
 						required: true,
 						onChange: (e) =>
 							dispatchProductData({
-								type: "Price",
+								type: ProductActionKind.PRICE,
 								payload: e.target.value,
 							}),
 						value: productData.price,
@@ -131,19 +128,19 @@ export function AddProductForm({
 						onChange: (e) => {
 							if (e.target.value == "default") {
 								dispatchProductData({
-									type: "Type",
+									type: ProductActionKind.TYPE,
 									payload: "",
 								});
 								setProductType(null);
 							} else {
 								setProductType(e.target.value as ProductTypes);
 								dispatchProductData({
-									type: "Type",
+									type: ProductActionKind.TYPE,
 									payload: e.target.value,
 								});
 								dispatchProductData({
-									type: "Property",
-									payload: {},
+									type: ProductActionKind.PROPERTIES,
+									payload: "{}",
 								});
 							}
 						},
@@ -174,7 +171,7 @@ export function AddProductForm({
 				productType={productType}
 				formProps={{ register: register, errors: errors }}
 				formData={{
-					productData: productData as ProductDataTypes,
+					productData: productData as ProductStateTypes,
 					dispatchProductData: dispatchProductData,
 				}}
 			/>

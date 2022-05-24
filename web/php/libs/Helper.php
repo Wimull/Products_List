@@ -2,16 +2,7 @@
 
 
     class Helper{
-        static function cast($instance, $className){
-            return unserialize(
-                sprintf(
-                    'O:%d:"%s":%s',
-                    strlen($className),
-                    $className,
-                    strstr(strstr(serialize($instance), '"'), ':')
-                )
-                );
-        }
+
         static function CallAPI($method, $url, $data){
             $curl = curl_init();
             switch ($method){

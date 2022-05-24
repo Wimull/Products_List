@@ -10,6 +10,7 @@ export function Products({ products }: ProductsProps) {
 	return (
 		<div className="d-flex row align-items-center justify-content-center items gap-5 p-3">
 			{products.map(({ sku, name, price, type, properties }) => {
+				console.log(sku, properties);
 				return (
 					<Product
 						key={sku}
@@ -26,7 +27,7 @@ export function Products({ products }: ProductsProps) {
 				);
 			})}
 
-			<Product
+			{/* <Product
 				SKU="1"
 				name="Name"
 				price="100"
@@ -57,7 +58,7 @@ export function Products({ products }: ProductsProps) {
 				price="100"
 				attribute={{ type: "Weight", value: [{ Weight: "1" }] }}
 				image="/assets/defaultImages/furniture.jpg"
-			/>
+			/> */}
 		</div>
 	);
 }

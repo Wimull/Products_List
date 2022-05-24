@@ -54,7 +54,7 @@ try{
                 echo var_dump($result);
                 echo "<b>JSON Result: </b>" . json_encode($result);
             }
-        } else throw new \Exception("The requested object '$controller_name' is not supported.", 400);
+        } else throw new \Error("The requested object '$controller_name' is not supported.", 400);
     } else {
         if (ucwords($request->verb) == "GET" && !$request->url_elements[2]) {
 			throw new \Exception("The 'controller' URL parameter is missing.", 400);

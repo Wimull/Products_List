@@ -26,11 +26,11 @@ export function HomePage() {
 		const res = await api.get("/products");
 		if (res.status == 200) {
 			let data = res.data;
-			data.forEach((product: ProductType | any) => {
-				product.properties = JSON.parse(
-					'{ "type":"Size", "props":[{"Size":20}] }'
-				);
+			data.forEach((product: ProductType | any, index: number) => {
+				//console.log(data);
+				data[index].properties = JSON.parse(product.properties);
 			});
+			console.log(data);
 
 			setProducts(data);
 			return;

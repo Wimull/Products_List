@@ -14,7 +14,7 @@ interface ProductProps {
 	type: ProductTypes;
 	attribute: {
 		type: ProductsPropertiesType;
-		value: { [name: string]: string }[];
+		value: { [name: string]: string };
 	};
 	image: string;
 }
@@ -27,19 +27,20 @@ export function Product({
 	image,
 	type,
 }: ProductProps) {
+	//console.log(attribute);
 	let propertyText = "";
 	switch (type.toLocaleLowerCase()) {
 		case "book":
-			propertyText = `${attribute.value[0][attribute.type]} ${
+			propertyText = `${attribute.value[attribute.type]} ${
 				productsProperties["Book"].props[0].measurement
 			}`;
 		case "dvd":
-			propertyText = `${attribute.value[0][attribute.type]} ${
+			propertyText = `${attribute.value[attribute.type]} ${
 				productsProperties["Dvd"].props[0].measurement
 			}`;
 			break;
 		case "furniture":
-			propertyText = `${attribute.value[0]["Length"]}x${attribute.value[0]["Width"]}x${attribute.value[0]["Height"]}`;
+			propertyText = `${attribute.value["Length"]}x${attribute.value["Width"]}x${attribute.value["Height"]}`;
 			break;
 		default:
 			propertyText =
