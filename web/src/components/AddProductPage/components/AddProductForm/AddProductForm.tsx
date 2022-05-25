@@ -29,7 +29,7 @@ export function AddProductForm({
 				?.slice(0, 4)
 				.toLocaleUpperCase()}${productData.price
 				?.replace("$", "")
-				.slice(0, 3)}${productData.name
+				.slice(-3)}${productData.name
 				?.slice(0, 4)
 				.toLocaleUpperCase()}`,
 		});

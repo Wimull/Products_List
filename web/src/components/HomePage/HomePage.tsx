@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useLayoutEffect, useState } from "react";
 import { Header, Footer, Products } from "..";
 import axios from "axios";
 import { api } from "../../libs/api";
@@ -21,23 +21,22 @@ export function HomePage() {
 		string[]
 	>([]);
 	const [products, setProducts] = useState<ProductType[] | null>();
+	const [error, setError] = useState<string | null>();
 
 	const handleFetchProducts = useCallback(async () => {
 		const res = await api.get("/products");
 		if (res.status == 200) {
 			let data = res.data;
 			data.forEach((product: ProductType | any, index: number) => {
-				//console.log(data);
 				data[index].properties = JSON.parse(product.properties);
 			});
-			console.log(data);
 
 			setProducts(data);
 			return;
 		} else return;
 	}, [products]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		handleFetchProducts();
 	}, []);
 
@@ -52,7 +51,6 @@ export function HomePage() {
 		} else {
 			setItemsSelectedForDeletion([...itemsSelectedForDeletion, item]);
 		}
-		console.log(itemsSelectedForDeletion);
 	}
 
 	async function handleMassDeletion() {
@@ -67,7 +65,9 @@ export function HomePage() {
 					ids: itemsSelectedForDeletion,
 				},
 			});
+			setError(null);
 		} catch (e) {
+			setError("Error 500: No product was deleted");
 			console.log(e);
 		}
 		setItemsSelectedForDeletion([]);
@@ -84,7 +84,24 @@ export function HomePage() {
 				}}
 			>
 				<Header />
-				{products && <Products products={products} />}
+				{error && <span className="error_message">{error}</span>}
+				{products == null ? (
+					<></>
+				) : products?.length > 0 ? (
+					<Products products={products} />
+				) : (
+					<span
+						className="align-items-center justify-content-center fw-bold "
+						style={{
+							fontSize: "2.5rem",
+							color: "#b1bbbb",
+							paddingTop: "30px",
+						}}
+					>
+						No product has been found. Did you forget to add a
+						product?
+					</span>
+				)}
 			</MassDeletionContext.Provider>
 			<Footer />
 		</>

@@ -18,7 +18,7 @@ export function Products({ products }: ProductsProps) {
 						name={name}
 						price={price}
 						type={type}
-						attribute={{
+						property={{
 							type: properties.type,
 							value: properties.props,
 						}}

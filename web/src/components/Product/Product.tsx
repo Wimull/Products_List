@@ -5,6 +5,7 @@ import {
 	ProductTypes,
 } from "../../App";
 import { MassDeletionContext } from "../HomePage";
+import { getPropertyText } from "./propertyText";
 import "./styles.css";
 
 interface ProductProps {
@@ -12,7 +13,7 @@ interface ProductProps {
 	name: string;
 	price: string;
 	type: ProductTypes;
-	attribute: {
+	property: {
 		type: ProductsPropertiesType;
 		value: { [name: string]: string };
 	};
@@ -23,30 +24,11 @@ export function Product({
 	SKU,
 	name,
 	price,
-	attribute,
+	property,
 	image,
 	type,
 }: ProductProps) {
-	//console.log(attribute);
-	let propertyText = "";
-	switch (type.toLocaleLowerCase()) {
-		case "book":
-			propertyText = `${attribute.value[attribute.type]} ${
-				productsProperties["Book"].props[0].measurement
-			}`;
-		case "dvd":
-			propertyText = `${attribute.value[attribute.type]} ${
-				productsProperties["Dvd"].props[0].measurement
-			}`;
-			break;
-		case "furniture":
-			propertyText = `${attribute.value["Length"]}x${attribute.value["Width"]}x${attribute.value["Height"]}`;
-			break;
-		default:
-			propertyText =
-				"Error: propertyText for this type not yet implemented/missing.";
-	}
-
+	let propertyText = getPropertyText(type, property);
 	const { handleItemSelectedChange, itemsSelectedForDeletion } =
 		useContext(MassDeletionContext);
 
@@ -100,7 +82,7 @@ export function Product({
 					</span>
 					<span className="text col-12">
 						<span style={{ fontWeight: "bold" }}>
-							{attribute.type}:{" "}
+							{property.type}:{" "}
 						</span>
 						{propertyText}
 					</span>

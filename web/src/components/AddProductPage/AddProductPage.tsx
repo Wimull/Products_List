@@ -1,10 +1,11 @@
-import React, { Reducer, useReducer } from "react";
+import React, { Reducer, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "..";
 import { useForm } from "react-hook-form";
 
 import { AddProductForm, AddProductHeader } from "./components";
 import { api } from "../../libs/api";
+import { AxiosError } from "axios";
 
 export enum ProductActionKind {
 	SKU = "sku",
@@ -74,19 +75,31 @@ export function AddProductPage() {
 		type: "",
 		properties: "[]",
 	});
+	const [errorSkuInvalid, setErrorSkuInvalid] = useState<string | null>();
 
 	const navigate = useNavigate();
-	function handleNewProductSubmit(e: any) {
-		console.log(productData);
-		api.post("/products", {
-			sku: productData.sku,
-			name: productData.name,
-			price: productData.price,
-			type: productData.type,
-			properties: productData.properties,
-		});
-		console.table(productData);
-		navigate("/");
+	async function handleNewProductSubmit(e: any) {
+		try {
+			await api.post("/products", {
+				sku: productData.sku,
+				name: productData.name,
+				price: productData.price,
+				type: productData.type,
+				properties: productData.properties,
+			});
+			setErrorSkuInvalid(null);
+			navigate("/");
+		} catch (e) {
+			const error = e as AxiosError;
+			console.log(e);
+			if (error.code == "ERR_BAD_REQUEST") {
+				setErrorSkuInvalid(
+					"Error: SKU already exists. Try changing the name of your product."
+				);
+			} else {
+				setErrorSkuInvalid(error.message);
+			}
+		}
 	}
 
 	return (
@@ -108,6 +121,9 @@ export function AddProductPage() {
 					}}
 				/>
 			</form>
+			{errorSkuInvalid && (
+				<span className="error_message">{errorSkuInvalid}</span>
+			)}
 			<Footer />
 		</>
 	);

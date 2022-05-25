@@ -15,3 +15,5 @@ CREATE TABLE IF NOT EXISTS `products` (
     `properties` varchar(65535) NOT NULL,
     PRIMARY KEY (`sku`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+SET sql_safe_updates = 0

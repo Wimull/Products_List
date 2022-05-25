@@ -25,21 +25,28 @@ require_once( __DIR__ . "\../models/ApiModel.php");
             return $products;
         }
         public function createProducts(){
-            $pdo = DB::get()->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (:sku, :name, :price, :type, :properties)");
-            $pdo->execute(array("sku" => $this->sku, "name" => $this->name, "price" => $this->price, "type" => $this->type, "properties" => $this->properties));
-            if ($pdo -> rowCount() > 0){
-                $this->sku = DB::lastInsertID("sku");
-                return $this;
+            try{
+
+                $pdo = DB::get()->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (:sku, :name, :price, :type, :properties)");
+                $pdo->execute(array("sku" => $this->sku, "name" => $this->name, "price" => $this->price, "type" => $this->type, "properties" => $this->properties));
+                if ($pdo -> rowCount() > 0){
+                    $this->sku = DB::lastInsertID("sku");
+                    return $this;
+                }
+                throw new \Exception("No product was created", 500);
+            } catch (Exception $e){
+                throw new \Exception("No product was created", 406);
+
             }
-            throw new \Exception("No product was created", 500);
         }
+
         public function deleteProducts($products_sku){
-            $pdo = DB::get()->prepare("DELETE FROM products WHERE sku IN (:sku)");
             $this->sku = $products_sku;
-            $pdo->execute(array(":sku" => implode(",",$this->sku)));
+            $query = "DELETE FROM products WHERE sku IN ('" . implode("', '", $products_sku) . "')";
+            $pdo = DB::get()->query($query);
             if ($pdo->rowCount() > 0){
                 return $this;
-            } throw new \Exception("No products deleted", 500);
+            } throw new \Exception("No product was deleted", 500);
         }
         public function optionsProducts($request){
             return $this;
