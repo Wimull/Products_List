@@ -28,6 +28,6 @@ named `admin`. <br> <br> Then, to start the server, go to `web\php` and run
 for the server to be run at. <br> <br> Then, add a `.env.local` file to the
 `web` directory with a `VITE_API_URL` variable with the value
 `http://localhost:<port>/api` where `port` is the port where the server is being
-run. Then run in the terminal `npm run start` to run the production build, or
-`npm run dev` to run the developer build. Finally, go to `http://localhost:3000`
-to see the application.
+run. Then run in the terminal `npm run build` followed by `npm run start` to run
+the production build, or `npm run dev` to run the developer build. Finally, go
+to `http://localhost:3000` to see the application.
