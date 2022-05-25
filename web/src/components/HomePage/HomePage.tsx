@@ -90,17 +90,20 @@ export function HomePage() {
 				) : products?.length > 0 ? (
 					<Products products={products} />
 				) : (
-					<span
-						className="align-items-center justify-content-center fw-bold "
-						style={{
-							fontSize: "2.5rem",
-							color: "#b1bbbb",
-							paddingTop: "30px",
-						}}
+					<div
+						className="d-flex align-items-center justify-content-center fw-bold "
+						style={{ height: "300px" }}
 					>
-						No product has been found. Did you forget to add a
-						product?
-					</span>
+						<span
+							style={{
+								fontSize: "3rem",
+								color: "#b1bbbb",
+							}}
+						>
+							No product has been found. Did you forget to add a
+							product?
+						</span>
+					</div>
 				)}
 			</MassDeletionContext.Provider>
 			<Footer />
