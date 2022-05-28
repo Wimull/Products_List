@@ -1,7 +1,10 @@
 <?php 
 
+namespace Api\Libs;
 
-class Request{
+
+class Request
+{
     public $url_elements;	// URL elements in array delimited by '/' excluding parameters
     public $verb;			
     public $parameters;		// URL parameters. reserved variables = format
@@ -10,8 +13,8 @@ class Request{
 	public $output_format;	
 
 
-    public function __construct() {
-
+    public function __construct()
+    {
         $this->verb = $_SERVER['REQUEST_METHOD'];
         $this->url_elements = explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]);
 		$this->output_format = 'json';
@@ -23,13 +26,15 @@ class Request{
         return true;
     }
 
-    private function parseURLParams() {
+    private function parseURLParams()
+    {
         if (!empty($_SERVER['QUERY_STRING'])) {
             parse_str( $_SERVER['QUERY_STRING'], $this->parameters);
         }
 	}
 	
-	private function parseBody() {
+	private function parseBody()
+    {
         $body = file_get_contents("php://input");
         $this->request_format = false;
         if(!empty($_SERVER['CONTENT_TYPE']) && strlen($body) > 0) {

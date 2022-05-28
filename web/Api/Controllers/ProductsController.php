@@ -1,18 +1,24 @@
-<?php 
-require_once( __DIR__ . "\../models/ProductsModel.php");
-//require( __DIR__ . "\../libs/Helper.php");
-require( __DIR__ . "\../controllers/ApiController.php");
+<?php
+
+namespace Api\Controllers;
+
+use Api\Models\ProductsModel;
+use Api\Controllers\ApiController;
+
+
+
     /**
     @desc   Products controller 
-     */class ProductsController extends ApiController {
+     */class ProductsController implements ApiController
+    {
 
         private $model;
         private $model_name;
 
+
         public function __construct()
         {
-            preg_match("#(.+)Controller$#", get_class($this), $match);
-            $this->model_name = $match[1] . "Model";
+            $this->model_name = "Api\\Models\\ProductsModel";
             if (class_exists($this->model_name)) {
                 $this->model = new $this->model_name();
             } else {
@@ -30,7 +36,8 @@ require( __DIR__ . "\../controllers/ApiController.php");
         @uri    /products/{sku}
         @verb   GET
         @desc   Get one Product
-        */ public function getAction($request) {
+        */ public function getAction($request)
+        {
             if (!empty($request->url_elements[3])) {
                 throw new \Exception("Get by sku not yet implemented", 400);
             }
@@ -41,16 +48,17 @@ require( __DIR__ . "\../controllers/ApiController.php");
         @uri    /products
         @verb   POST
         @desc   Create one new product
-         */public function postAction($request) {
-
-            $this->model->sku = $request->body->sku;
-            $this->model->name = $request->body->name;
-            $this->model->price = $request->body->price;
-            $this->model->type = $request->body->type;
-            $this->model->properties = $request->body->properties;
+         */public function postAction($request)
+        {
+            $body = new class{}; 
+            $body->sku = $request->body->sku;
+            $body->name = $request->body->name;
+            $body->price = $request->body->price;
+            $body->type = $request->body->type;
+            $body->properties = $request->body->properties;
             
-            if ($this->model->sku && $this->model->name && $this->model->price && $this->model->type && $this->model->properties){
-                return $this->model->createProducts();
+            if ($body->sku && $body->name && $body->price && $body->type && $body->properties){
+                return $this->model->createProducts($body);
             }
 
             throw new \Exception("Request body does not contain all props of a product.", 400);
@@ -60,7 +68,8 @@ require( __DIR__ . "\../controllers/ApiController.php");
         @uri    /products
         @verb   DELETE
         @desc   Delete one or multiple products
-         */public function deleteAction($request){
+         */public function deleteAction($request)
+         {
 
             $ids = $request->body->ids;
 
@@ -70,7 +79,8 @@ require( __DIR__ . "\../controllers/ApiController.php");
 
             throw new \Exception("Missing product SKUs.", 400);
         }
-        public function optionsAction($request){
+        public function optionsAction($request)
+        {
             return $this->model->optionsProducts($request);
         }
         

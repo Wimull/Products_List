@@ -1,42 +1,49 @@
 <?php  
-    $debug = 0;
-require("./autoload.php");
+namespace Api;
+
+use Api\Libs\Request;
+use Api\Views\JsonView;
+use Api\Controllers\ProductsController;
+use Api\Models\ProductsModel;
+
+
+
 
 
 try{
-
-    // spl_autoload_register(function ($classname)
-    // {
-    //     if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
-    //         require __DIR__ . '/controllers/' . $classname . '.php';
-    //     } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
-    //         require __DIR__ . '/models/' . $classname . '.php';
-    //     } elseif(preg_match("/[a-zA-Z]*Views$/", $classname)) {
-    //         require __DIR__ . '/views/' . $classname . '.php';
-    //     }
-    //     else {
-
-    //         require __DIR__ . '/lib/' . str_replace('_', DIRECTORY_SEPARATOR, $classname) . '.php';
-    //     }
-    // });
-
+    
+    spl_autoload_register(function ($classname)
+    {
+        if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
+            require dirname(__FILE__, 2) . '\\' . $classname . '.php';
+        } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
+            require dirname(__FILE__) . '\\models\\' . $classname . '.php';
+        } elseif(preg_match("/[a-zA-Z]*View$/", $classname)) {
+            require dirname(__FILE__, 2) . '\\' . $classname . '.php';
+        } else {
+            require dirname(__FILE__, 2) . '\\' . str_replace('_', DIRECTORY_SEPARATOR, $classname) . '.php';
+            }
+        });
+        
+    $debug = 0;
     $request = new Request();
-
-
+        
     if ($request->url_elements[2] && !strpos($request->url_elements[2],".")) {
-        $controller_name = ucfirst($request->url_elements[2]) . "Controller";
+        $controller_name = "Api\\Controllers\\" . ucfirst($request->url_elements[2]) . "Controller";
         if(class_exists($controller_name)){
             $controller = new $controller_name();
             $action_name = strtolower($request->verb) . "Action";
             $result = $controller->$action_name($request);
 
             if (!$debug) {
-                $view_name = ucfirst($request->output_format) . 'View';
+                $view_name = "Api\\Views\\" . ucfirst($request->output_format) . 'View';
+
                 if(class_exists($view_name)) {
                     $view = new $view_name();
-                    $view->render($result);
-
-                } else throw new \Exception("The requested format '$request->output_format' is not supported.", 400);
+                    echo $view->render($result);
+                } else {
+                    throw new \Exception("The requested format '$request->output_format' is not supported.", 400);
+                }
 
             } else { // if debugging is enabled, output the request and response as HTML
             
@@ -54,7 +61,7 @@ try{
                 echo var_dump($result);
                 echo "<b>JSON Result: </b>" . json_encode($result);
             }
-        } else throw new \Error("The requested object '$controller_name' is not supported.", 400);
+        } else throw new \Exception("The requested object '$controller_name' is not supported.", 400);
     } else {
         if (ucwords($request->verb) == "GET" && !$request->url_elements[2]) {
 			throw new \Exception("The 'controller' URL parameter is missing.", 400);
@@ -63,7 +70,7 @@ try{
 } catch (\Exception $e) {
 	http_response_code($e->getCode());
     $view = new JsonView();
-    $view->render($e);
+    echo $view->render($e);
 	echo "<h1>" . $e->getCode() . " - " . $e->getMessage() . "</h1><br/><br/>";
 	echo "Stack Trace: " . $e->getTraceAsString();
 	error_log(date('Y-m-d h:i:s a', time()) . " - " . $e->getCode() . " - " . $e->getMessage() . PHP_EOL . "Stack Trace: " . $e->getTraceAsString() . PHP_EOL.PHP_EOL, 3, "log.txt");
