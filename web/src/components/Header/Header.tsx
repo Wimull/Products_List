@@ -27,6 +27,7 @@ export function Header() {
 							? `disabled`
 							: `shadow`
 					}`}
+					disabled={itemsSelectedForDeletion.length === 0}
 					onClick={() => handleMassDeletion(itemsSelectedForDeletion)}
 				>
 					MASS DELETE
