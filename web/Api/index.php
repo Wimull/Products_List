@@ -12,16 +12,15 @@ use Api\Models\ProductsModel;
 
 try{
     
-    spl_autoload_register(function ($classname)
-    {
+    spl_autoload_register(function ($classname){
         if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
-            require dirname(__FILE__, 2) . '\\' . $classname . '.php';
+            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
         } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
-            require dirname(__FILE__) . '\\models\\' . $classname . '.php';
+            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "models" . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
         } elseif(preg_match("/[a-zA-Z]*View$/", $classname)) {
-            require dirname(__FILE__, 2) . '\\' . $classname . '.php';
+            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
         } else {
-            require dirname(__FILE__, 2) . '\\' . str_replace('_', DIRECTORY_SEPARATOR, $classname) . '.php';
+            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
             }
         });
         

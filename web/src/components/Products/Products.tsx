@@ -10,7 +10,6 @@ export function Products({ products }: ProductsProps) {
 	return (
 		<div className="d-flex row align-items-center justify-content-center items gap-5 p-3">
 			{products.map(({ sku, name, price, type, properties }) => {
-				console.log(sku, properties);
 				return (
 					<Product
 						key={sku}
