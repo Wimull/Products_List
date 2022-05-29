@@ -5,21 +5,16 @@ use api\Libs\ApiDatabase;
 
 use PDOException;
 
-require_once __DIR__ . "/../vendor/autoload.php";
+// require_once __DIR__ . "/../vendor/autoload.php";
 
-
-
-$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 3));
-
-$dotenv->safeLoad();
+// $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 3));
+// $dotenv->safeLoad();
 
 
 
     class DB implements ApiDatabase
     {
         private static $instance = null;
-
-
 
         private static function connect()
 {

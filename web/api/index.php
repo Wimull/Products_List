@@ -19,7 +19,8 @@ require_once __DIR__ . "/libs/Helper.php";
 require_once __DIR__ . "/vendor/autoload.php";
 
 
-
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
+$dotenv->safeLoad();
 
 
 try{
