@@ -16,7 +16,7 @@ use PDOException;
 {
             if (self::$instance == null){
                 try{
-                    self::$instance = new \PDO($_SERVER["DB_URI"], $_SERVER["DB_LOGIN"], $_SERVER["DB_PASSWORD"]);
+                    self::$instance = new \PDO($_ENV["DB_URI"], $_ENV["DB_LOGIN"], $_ENV["DB_PASSWORD"]);
                     self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 }
 
