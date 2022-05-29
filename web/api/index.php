@@ -79,7 +79,7 @@ try{
     echo $view->render($e);
 	echo "<h1>" . $e->getCode() . " - " . $e->getMessage() . "</h1><br/><br/>";
 	echo "Stack Trace: " . $e->getTraceAsString();
-	error_log(date('Y-m-d h:i:s a', time()) . " - " . $e->getCode() . " - " . $e->getMessage() . PHP_EOL . "Stack Trace: " . $e->getTraceAsString() . PHP_EOL.PHP_EOL, 3, "log.txt");
+	//error_log(date('Y-m-d h:i:s a', time()) . " - " . $e->getCode() . " - " . $e->getMessage() . PHP_EOL . "Stack Trace: " . $e->getTraceAsString() . PHP_EOL.PHP_EOL, 3, "log.txt");
 
 }
 

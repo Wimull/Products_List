@@ -1,11 +1,13 @@
 {
-    "name": "usuario/web",
-    "autoload": {
-        "psr-4": {
-            "Usuario\\Web\\": "src/"
-        }
-    },
-    "require": {
-        "vlucas/phpdotenv": "^5.4"
-    }
+	"name": "usuario/web",
+	"autoload": {
+		"psr-4": {
+			"Usuario\\Web\\": "src/"
+		}
+	},
+	"require": {
+		"vlucas/phpdotenv": "^5.4",
+		"php": "^8.1",
+		"tracy/tracy": "^2.0"
+	}
 }
