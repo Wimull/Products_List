@@ -7,16 +7,16 @@ use api\Controllers\ProductsController;
 use api\Models\ProductsModel;
 
 
-require_once "./Controllers/ApiController.php";
-require_once "./Controllers/ProductsController.php";
-require_once "./Model/ApiModel.php";
-require_once "./Model/ProductsModel.php";
-require_once "./View/ApiView.php";
-require_once "./View/JsonView.php";
-require_once "./Libs/ApiDatabase.php";
-require_once "./Libs/DB.php";
-require_once "./Libs/Request.php";
-require_once "./Libs/Helper.php";
+require_once __DIR__ . "./Controllers/ApiController.php";
+require_once __DIR__ . "./Controllers/ProductsController.php";
+require_once __DIR__ . "./Model/ApiModel.php";
+require_once __DIR__ . "./Model/ProductsModel.php";
+require_once __DIR__ . "./View/ApiView.php";
+require_once __DIR__ . "./View/JsonView.php";
+require_once __DIR__ . "./Libs/ApiDatabase.php";
+require_once __DIR__ . "./Libs/DB.php";
+require_once __DIR__ . "./Libs/Request.php";
+require_once __DIR__ . "./Libs/Helper.php";
 
 
 try{
