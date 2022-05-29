@@ -17,15 +17,9 @@ require_once __DIR__ . "/libs/DB.php";
 require_once __DIR__ . "/libs/Request.php";
 require_once __DIR__ . "/libs/Helper.php";
 
-try{
-    
     include __DIR__ . "/../vendor/autoload.php";
     $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
     $dotenv->safeLoad();
-}
-catch (\Exception $e){
-
-}
 
 
 try{
