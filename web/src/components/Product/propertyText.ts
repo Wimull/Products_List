@@ -20,7 +20,7 @@ export function getPropertyText(
 			break;
 		case "dvd":
 			propertyText = `${property.value[property.type]} ${
-				productsProperties["Dvd"].props[0].measurement
+				productsProperties["DVD"].props[0].measurement
 			}`;
 			break;
 		case "furniture":
