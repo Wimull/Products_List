@@ -6,7 +6,7 @@
 	min-width: 300px;
 	border-radius: 15px 15px 0px 0px;
 }
-.delete_checkbox {
+.delete-checkbox {
 	position: absolute;
 	top: 8%;
 	transform: translateX(-110px);

@@ -6,7 +6,7 @@ export const productsProperties = {
 		type: "Weight",
 		props: [{ property: "Weight", measurement: "KG" }],
 	},
-	Dvd: { type: "Size", props: [{ property: "Size", measurement: "MB" }] },
+	DVD: { type: "Size", props: [{ property: "Size", measurement: "MB" }] },
 
 	Furniture: {
 		type: "Dimensions",
