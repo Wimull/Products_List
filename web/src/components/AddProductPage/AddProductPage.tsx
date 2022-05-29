@@ -93,9 +93,7 @@ export function AddProductPage() {
 			const error = e as AxiosError;
 			console.log(e);
 			if (error.code == "ERR_BAD_REQUEST") {
-				setErrorSkuInvalid(
-					"Error: SKU already exists. Try changing the name of your product."
-				);
+				setErrorSkuInvalid("Error: SKU already exists.");
 			} else {
 				setErrorSkuInvalid(error.message);
 			}

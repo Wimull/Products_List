@@ -22,24 +22,26 @@ export function AddProductForm({
 }: AddProductFormProps) {
 	const [productType, setProductType] = useState<ProductTypes | null>(null);
 
-	useEffect(() => {
-		dispatchProductData({
-			type: ProductActionKind.SKU,
-			payload: `${productData.type
-				?.slice(0, 4)
-				.toLocaleUpperCase()}${productData.price
-				?.replace("$", "")
-				.slice(-3)}${productData.name
-				?.slice(0, 4)
-				.toLocaleUpperCase()}`,
-		});
-	}, [productData.price, productData.type, productData.name]);
+	function createSKU(): string {
+		return `${productData.type
+			?.slice(0, 4)
+			.toLocaleUpperCase()}${productData.price
+			?.replace("$", "")
+			.slice(-3)}${productData.name?.slice(0, 4).toLocaleUpperCase()}`;
+	}
+
+	// useEffect(() => {
+	// 	dispatchProductData({
+	// 		type: ProductActionKind.SKU,
+	// 		payload:
+	// 	});
+	// }, [productData.price, productData.type, productData.name]);
 	return (
 		<div
 			className="h-100 w-100 align-items-baseline"
 			style={{ marginLeft: "20px" }}
 		>
-			<fieldset className="row mt-3 align-items-baseline" disabled>
+			<fieldset className="row mt-3 align-items-baseline">
 				<label htmlFor="sku" className="form_label col-1">
 					SKU:{" "}
 				</label>
