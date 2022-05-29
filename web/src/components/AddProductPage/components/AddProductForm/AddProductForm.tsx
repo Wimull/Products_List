@@ -55,7 +55,7 @@ export function AddProductForm({
 						onChange: (e) =>
 							dispatchProductData({
 								type: ProductActionKind.SKU,
-								payload: e.target.event,
+								payload: e.target.value,
 							}),
 					})}
 				/>
