@@ -13,10 +13,10 @@ require_once __DIR__ . "/Models/ApiModel.php";
 require_once __DIR__ . "/Models/ProductsModel.php";
 require_once __DIR__ . "/Views/ApiView.php";
 require_once __DIR__ . "/Views/JsonView.php";
-require_once __DIR__ . "/Libs/ApiDatabase.php";
-require_once __DIR__ . "/Libs/DB.php";
-require_once __DIR__ . "/Libs/Request.php";
-require_once __DIR__ . "/Libs/Helper.php";
+require_once __DIR__ . "/libs/ApiDatabase.php";
+require_once __DIR__ . "/libs/DB.php";
+require_once __DIR__ . "/libs/Request.php";
+require_once __DIR__ . "/libs/Helper.php";
 
 
 try{
