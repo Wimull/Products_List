@@ -4,7 +4,7 @@ namespace api;
 use api\Libs\Request;
 use api\Views\JsonView;
 
-
+// TODO - Deploy a MySQL Database, probably to AWS somehow...
 
 require_once __DIR__ . "/Controllers/ApiController.php";
 require_once __DIR__ . "/Controllers/ProductsController.php";
@@ -16,6 +16,10 @@ require_once __DIR__ . "/libs/ApiDatabase.php";
 require_once __DIR__ . "/libs/DB.php";
 require_once __DIR__ . "/libs/Request.php";
 require_once __DIR__ . "/libs/Helper.php";
+require_once __DIR__ . "/vendor/autoload.php";
+
+
+
 
 
 try{

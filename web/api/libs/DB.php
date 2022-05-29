@@ -5,6 +5,16 @@ use api\Libs\ApiDatabase;
 
 use PDOException;
 
+require_once __DIR__ . "/../vendor/autoload.php";
+
+
+
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 3));
+
+$dotenv->safeLoad();
+echo $_SERVER["DB_URI"];
+
+
     class DB implements ApiDatabase
     {
         private static $instance = null;
@@ -15,7 +25,7 @@ use PDOException;
 {
             if (self::$instance == null){
                 try{
-                    self::$instance = new \PDO("mysql:host=localhost;dbname=api_products", "admin", "admin");
+                    self::$instance = new \PDO($_SERVER["DB_URI"], $_SERVER["DB_LOGIN"], $_SERVER["DB_PASSWORD"]);
                     self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 }
 

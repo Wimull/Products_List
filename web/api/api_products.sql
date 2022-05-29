@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `products` (
     `name` varchar(255) NOT NULL,
     `price` varchar(255) NOT NULL,
     `type` varchar(255) NOT NULL,
-    `properties` varchar(65535) NOT NULL,
+    `properties` varchar(20000) NOT NULL,
     PRIMARY KEY (`sku`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
