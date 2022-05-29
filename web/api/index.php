@@ -21,6 +21,7 @@ require_once __DIR__ . "/libs/Helper.php";
     $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
     $dotenv->safeLoad();
 
+   
 
 try{
 
@@ -73,6 +74,7 @@ try{
     echo $view->render($e);
 	echo "<h1>" . $e->getCode() . " - " . $e->getMessage() . "</h1><br/><br/>";
 	echo "Stack Trace: " . $e->getTraceAsString();
+    echo json_encode($_ENV);
 	//error_log(date('Y-m-d h:i:s a', time()) . " - " . $e->getCode() . " - " . $e->getMessage() . PHP_EOL . "Stack Trace: " . $e->getTraceAsString() . PHP_EOL.PHP_EOL, 3, "log.txt");
 
 }
