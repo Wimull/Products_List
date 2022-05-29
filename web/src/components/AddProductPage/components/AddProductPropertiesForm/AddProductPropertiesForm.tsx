@@ -41,7 +41,7 @@ export function AddProductPropertiesForm({
 						</label>
 						<input
 							className="form-control col-2"
-							id={property}
+							id={property.toLocaleLowerCase()}
 							{...register(property, {
 								required: true,
 								onChange: (e) =>

@@ -62,7 +62,7 @@ export function Product({
 				}}
 			>
 				<input
-					className="delete_checkbox form-check-input overflow-visible"
+					className="delete-checkbox form-check-input overflow-visible"
 					type="checkbox"
 					value=""
 					checked={selectedForDeletion}
