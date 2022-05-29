@@ -27,3 +27,4 @@ dist-ssr
 .vercel
 api/.env
 api/vendor
+vendor

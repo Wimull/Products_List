@@ -1,0 +1,11 @@
+{
+    "name": "usuario/web",
+    "autoload": {
+        "psr-4": {
+            "Usuario\\Web\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
