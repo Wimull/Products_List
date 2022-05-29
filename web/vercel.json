@@ -1,10 +1,10 @@
 {
 	"functions": {
-		"api/**/*.php": {
+		"api/index.php": {
 			"runtime": "vercel-php@0.5.1",
 			"maxDuration": 10
 		},
-		"api/index.php": {
+		"api/**/*.php": {
 			"runtime": "vercel-php@0.5.1",
 			"maxDuration": 10
 		}
