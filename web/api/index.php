@@ -9,10 +9,10 @@ use api\Models\ProductsModel;
 
 require_once __DIR__ . "/Controllers/ApiController.php";
 require_once __DIR__ . "/Controllers/ProductsController.php";
-require_once __DIR__ . "/Model/ApiModel.php";
-require_once __DIR__ . "/Model/ProductsModel.php";
-require_once __DIR__ . "/View/ApiView.php";
-require_once __DIR__ . "/View/JsonView.php";
+require_once __DIR__ . "/Models/ApiModel.php";
+require_once __DIR__ . "/Models/ProductsModel.php";
+require_once __DIR__ . "/Views/ApiView.php";
+require_once __DIR__ . "/Views/JsonView.php";
 require_once __DIR__ . "/Libs/ApiDatabase.php";
 require_once __DIR__ . "/Libs/DB.php";
 require_once __DIR__ . "/Libs/Request.php";
