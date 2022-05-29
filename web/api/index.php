@@ -7,22 +7,31 @@ use api\Controllers\ProductsController;
 use api\Models\ProductsModel;
 
 
-
+require_once "./Controllers/ApiController.php";
+require_once "./Controllers/ProductsController.php";
+require_once "./Model/ApiModel.php";
+require_once "./Model/ProductsModel.php";
+require_once "./View/ApiView.php";
+require_once "./View/JsonView.php";
+require_once "./Libs/ApiDatabase.php";
+require_once "./Libs/DB.php";
+require_once "./Libs/Request.php";
+require_once "./Libs/Helper.php";
 
 
 try{
     
-    spl_autoload_register(function ($classname){
-        if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
-            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
-        } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
-            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "models" . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
-        } elseif(preg_match("/[a-zA-Z]*View$/", $classname)) {
-            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
-        } else {
-            require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
-            }
-        });
+    // spl_autoload_register(function ($classname){
+    //     if(preg_match("/[a-zA-Z]*Controller$/", $classname)) {
+    //         require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
+    //     } elseif(preg_match("/[a-zA-Z]*Models$/", $classname)) {
+    //         require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "models" . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
+    //     } elseif(preg_match("/[a-zA-Z]*View$/", $classname)) {
+    //         require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
+    //     } else {
+    //         require  $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
+    //         }
+    //     });
         
     $debug = 0;
     $request = new Request();
