@@ -1,7 +1,7 @@
 <?php
-namespace Api\Libs;
+namespace api\Libs;
 
-use Api\Libs\ApiDatabase;
+use api\Libs\ApiDatabase;
 
 use PDOException;
 

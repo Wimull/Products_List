@@ -1,6 +1,6 @@
 <?php 
 
-namespace Api\Models;
+namespace api\Models;
 
     interface ApiModel
     {

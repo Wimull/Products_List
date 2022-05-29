@@ -1,10 +1,10 @@
 <?php  
-namespace Api;
+namespace api;
 
-use Api\Libs\Request;
-use Api\Views\JsonView;
-use Api\Controllers\ProductsController;
-use Api\Models\ProductsModel;
+use api\Libs\Request;
+use api\Views\JsonView;
+use api\Controllers\ProductsController;
+use api\Models\ProductsModel;
 
 
 

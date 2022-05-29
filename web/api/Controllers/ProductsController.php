@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\Controllers;
+namespace api\Controllers;
 
-use Api\Models\ProductsModel;
-use Api\Controllers\ApiController;
+use api\Models\ProductsModel;
+use api\Controllers\ApiController;
 
 
 

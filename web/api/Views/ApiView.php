@@ -1,6 +1,6 @@
 <?php 
 
-namespace Api\Views;
+namespace api\Views;
 
 interface ApiView
 {

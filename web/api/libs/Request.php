@@ -1,6 +1,6 @@
 <?php 
 
-namespace Api\Libs;
+namespace api\Libs;
 
 
 class Request

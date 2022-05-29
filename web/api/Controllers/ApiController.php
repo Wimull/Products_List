@@ -1,8 +1,8 @@
 <?php 
 
-namespace Api\Controllers;
+namespace api\Controllers;
 
-use Api\Libs\Request;
+use api\Libs\Request;
 
 interface ApiController
 {

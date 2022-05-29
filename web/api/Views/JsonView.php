@@ -1,7 +1,7 @@
 <?php 
-namespace Api\Views;
+namespace api\Views;
 
-use Api\Views\ApiView;
+use api\Views\ApiView;
 
     class JsonView implements ApiView
     {

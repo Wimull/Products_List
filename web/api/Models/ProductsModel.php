@@ -1,9 +1,9 @@
 <?php  
 
-namespace Api\Models;
+namespace api\Models;
 
 use Api\Models\ApiModel;
-use Api\Libs\DB;
+use api\Libs\DB;
 
 
 
