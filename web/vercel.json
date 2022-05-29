@@ -2,6 +2,10 @@
 	"functions": {
 		"api/index.js": {
 			"maxDuration": 10
+		},
+		"api/a.php": {
+			"runtime": "vercel-php@0.5.1",
+			"maxDuration": 10
 		}
 	}
 }
