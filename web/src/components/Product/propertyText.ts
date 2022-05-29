@@ -17,6 +17,7 @@ export function getPropertyText(
 			propertyText = `${property.value[property.type]} ${
 				productsProperties["Book"].props[0].measurement
 			}`;
+			break;
 		case "dvd":
 			propertyText = `${property.value[property.type]} ${
 				productsProperties["Dvd"].props[0].measurement
