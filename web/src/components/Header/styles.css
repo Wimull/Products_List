@@ -1,5 +1,4 @@
-#add_product_btn,
-#delete_product_btn {
+.btn {
 	font-weight: bold;
 	border-width: 0.125em;
 	font-size: 1.25rem;
@@ -17,8 +16,7 @@
 	#Title {
 		font-size: 1.5rem;
 	}
-	#add_product_btn,
-	#delete_product_btn {
+	.btn {
 		font-size: 0.9rem;
 		transition: all 400ms;
 		min-width: 110px;

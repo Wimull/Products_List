@@ -90,3 +90,21 @@ body {
 		margin-right: 0px;
 	}
 }
+.btn {
+	font-weight: bold;
+	border-width: 0.125em;
+	font-size: 1.25rem;
+	transition: all 400ms;
+	min-width: 140px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	.btn {
+		font-size: 0.9rem;
+		transition: all 400ms;
+		min-width: 110px;
+		margin-top: 10px;
+	}
+}

@@ -21,21 +21,21 @@ export function AddProductForm({
 	formData: { productData, dispatchProductData },
 }: AddProductFormProps) {
 	const [productType, setProductType] = useState<ProductTypes | null>(null);
+	const [generateSkuActive, setGenerateSkuActive] = useState(false);
 
-	function createSKU(): string {
-		return `${productData.type
-			?.slice(0, 4)
-			.toLocaleUpperCase()}${productData.price
-			?.replace("$", "")
-			.slice(-3)}${productData.name?.slice(0, 4).toLocaleUpperCase()}`;
+	function generateSKU(): void {
+		dispatchProductData({
+			type: ProductActionKind.SKU,
+			payload: `${productData.type
+				?.slice(0, 4)
+				.toLocaleUpperCase()}${productData.price
+				?.replace("$", "")
+				.slice(-3)}${productData.name
+				?.slice(0, 4)
+				.toLocaleUpperCase()}`,
+		});
 	}
 
-	// useEffect(() => {
-	// 	dispatchProductData({
-	// 		type: ProductActionKind.SKU,
-	// 		payload:
-	// 	});
-	// }, [productData.price, productData.type, productData.name]);
 	return (
 		<div
 			className="h-100 w-100 align-items-baseline"
@@ -51,6 +51,7 @@ export function AddProductForm({
 					id="sku"
 					value={productData.sku}
 					{...register("SKU", {
+						required: true,
 						value: productData.sku,
 						onChange: (e) =>
 							dispatchProductData({
@@ -59,6 +60,11 @@ export function AddProductForm({
 							}),
 					})}
 				/>
+				{errors.SKU?.type === "required" && (
+					<span className="error_message col-12">
+						Sku is required
+					</span>
+				)}
 			</fieldset>
 			<fieldset className="row mt-3  align-items-baseline">
 				<label htmlFor="name" className="form_label col-1">
@@ -177,6 +183,26 @@ export function AddProductForm({
 					dispatchProductData: dispatchProductData,
 				}}
 			/>
+			<button
+				id="generate_sku_btn"
+				className={`btn btn-outline-info shadow mt-4 transition-all ${
+					generateSkuActive ? "active" : ""
+				}`}
+				type="button"
+				onClick={() => {
+					generateSKU();
+					setGenerateSkuActive(false);
+				}}
+				disabled={
+					productData.name == "" ||
+					productData.price == "" ||
+					productData.type == ""
+				}
+				onFocus={() => setGenerateSkuActive(true)}
+				onBlur={() => setGenerateSkuActive(false)}
+			>
+				Generate SKU
+			</button>
 		</div>
 	);
 }

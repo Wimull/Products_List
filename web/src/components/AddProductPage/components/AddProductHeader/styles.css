@@ -1,9 +1,5 @@
 #cancel_product_btn,
 #save_product_btn {
-	font-weight: bold;
-	border-width: 0.125rem;
-	font-size: 1.25rem;
-	transition: all 400ms;
 	min-width: 80px;
 }
 
