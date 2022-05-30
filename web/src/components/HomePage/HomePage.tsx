@@ -1,5 +1,5 @@
 import { createContext, useCallback, useLayoutEffect, useState } from "react";
-import { Header, Footer, Products } from "..";
+import { Header, Footer, Products, Loading } from "..";
 import axios from "axios";
 import { api } from "../../libs/api";
 import { ProductType } from "../../App";
@@ -22,18 +22,20 @@ export function HomePage() {
 	>([]);
 	const [products, setProducts] = useState<ProductType[] | null>();
 	const [error, setError] = useState<string | null>();
+	const [getProductsLoading, setGetProductsLoading] = useState(false);
+	const [deleteProductsLoading, setDeleteProductsLoading] = useState(false);
 
 	const handleFetchProducts = useCallback(async () => {
+		setGetProductsLoading(true);
 		const res = await api.get("/products");
 		if (res.status == 200) {
 			let data = res.data;
 			data.forEach((product: ProductType | any, index: number) => {
 				data[index].properties = JSON.parse(product.properties);
 			});
-
 			setProducts(data);
-			return;
-		} else return;
+		}
+		setGetProductsLoading(false);
 	}, [products]);
 
 	useLayoutEffect(() => {
@@ -54,6 +56,7 @@ export function HomePage() {
 	}
 
 	async function handleMassDeletion() {
+		setDeleteProductsLoading(true);
 		try {
 			await api.delete("/products", {
 				method: "delete",
@@ -71,6 +74,7 @@ export function HomePage() {
 			console.log(e);
 		}
 		setItemsSelectedForDeletion([]);
+		setDeleteProductsLoading(false);
 		handleFetchProducts();
 	}
 
@@ -83,10 +87,13 @@ export function HomePage() {
 					handleItemSelectedChange: handleItemSelectedChange,
 				}}
 			>
-				<Header />
+				<Header deleting={deleteProductsLoading} />
+
 				{error && <span className="error_message">{error}</span>}
-				{products == null ? (
-					<></>
+				{products == null || getProductsLoading ? (
+					<div className="d-flex align-items-center justify-content-center fw-bold my-5 ">
+						<Loading height={"80px"} width={"80px"} />
+					</div>
 				) : products?.length > 0 ? (
 					<Products products={products} />
 				) : (

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { MassDeletionContext } from "..";
+import { MassDeletionContext, Loading } from "..";
 import "./styles.css";
 
-export function Header() {
+export function Header({ deleting = false }) {
 	const { itemsSelectedForDeletion, handleMassDeletion } =
 		useContext(MassDeletionContext);
 
@@ -27,10 +27,10 @@ export function Header() {
 							? `disabled`
 							: `shadow`
 					}`}
-					disabled={itemsSelectedForDeletion.length === 0}
+					disabled={itemsSelectedForDeletion.length === 0 || deleting}
 					onClick={() => handleMassDeletion(itemsSelectedForDeletion)}
 				>
-					MASS DELETE
+					{deleting ? <Loading /> : "MASS DELETE"}
 				</button>
 			</div>
 		</nav>

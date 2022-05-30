@@ -4,3 +4,4 @@ export * from "./AddProductPage";
 export * from "./Footer";
 export * from "./Product";
 export * from "./Products";
+export * from "./Loading";

@@ -76,9 +76,10 @@ export function AddProductPage() {
 		properties: "[]",
 	});
 	const [errorSkuInvalid, setErrorSkuInvalid] = useState<string | null>();
-
+	const [postProductsLoading, setPostProductsLoading] = useState(false);
 	const navigate = useNavigate();
 	async function handleNewProductSubmit(e: any) {
+		setPostProductsLoading(true);
 		try {
 			await api.post("/products", {
 				sku: productData.sku,
@@ -98,6 +99,7 @@ export function AddProductPage() {
 				setErrorSkuInvalid(error.message);
 			}
 		}
+		setPostProductsLoading(false);
 	}
 
 	return (
@@ -106,7 +108,7 @@ export function AddProductPage() {
 				id="product_form"
 				onSubmit={handleSubmit(handleNewProductSubmit)}
 			>
-				<AddProductHeader />
+				<AddProductHeader sending={postProductsLoading} />
 
 				<AddProductForm
 					formProps={{
