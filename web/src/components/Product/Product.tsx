@@ -68,6 +68,7 @@ export function Product({
 					checked={selectedForDeletion}
 					onChange={handleCheckbox}
 					ari-label={`Button for selecting ${name}, id ${SKU}, for deletion`}
+					aria-checked={selectedForDeletion}
 				/>
 				<div className="product row bg-light shadow overflow-visible d-flex">
 					<span className="text col-12 text-center">

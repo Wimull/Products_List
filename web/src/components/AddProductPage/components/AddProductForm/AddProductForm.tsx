@@ -200,6 +200,7 @@ export function AddProductForm({
 				}
 				onFocus={() => setGenerateSkuActive(true)}
 				onBlur={() => setGenerateSkuActive(false)}
+				aria-label="Generate SKU button"
 			>
 				Generate SKU
 			</button>
