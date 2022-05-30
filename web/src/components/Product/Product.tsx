@@ -78,7 +78,7 @@ export function Product({
 					</span>
 					<span className="text col-12 text-sm">
 						<span style={{ fontWeight: "bold" }}>Price:</span>{" "}
-						{price}.00 $
+						{price}.00$
 					</span>
 					<span className="text col-12">
 						<span style={{ fontWeight: "bold" }}>
